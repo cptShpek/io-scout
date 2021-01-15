@@ -1,0 +1,67 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  }
+
+#root {
+  min-height: 100%;
+  padding-top: 15px;
+  background: rgb(2,0,36);
+  background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(82,82,226,1) 45%, rgba(0,212,255,1) 100%) no-repeat;
+}
+
+.ant-input-affix-wrapper.input {
+  height: 50px;
+}
+
+.ant-input-affix-wrapper.input img{ 
+  width: 15px;
+}
+
+.Authors {
+  width: 50%;
+  margin: 0 auto;
+  background: white;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.authorsList:nth-child(2) div div ul li:last-child {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.authorAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: white;
+  font-size: large;
+  text-align: center;
+  padding-top: 5px;
+  background: blue;
+}
+
+li {
+  padding-left: 15px !important;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.pagination ul {
+  display: flex;
+  flex-direction: row;
+}
+
+.pagination ul li {
+  list-style-type: none;
+  font-size: x-large;
+  color: white;
+}
+
+a {
+  color: white !important;
+}
