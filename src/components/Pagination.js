@@ -1,21 +1,21 @@
 import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { pagination } from '../actions/index';
+import allActions from '../actions/index';
 
 const Pagination = () => {
   const dispatch = useDispatch();
-  const currentPage = useSelector((state) => state.currentPage);
+  const currentPage = useSelector((state) => state.filtersReducer.currentPage);
   const pagLinksRef = useRef();
 
   useEffect(() => {
     const clickHandler = (e) => {
       switch (e.target.name) {
         case 'next':
-          dispatch(pagination(1));
+          dispatch(allActions.filtersActions.pagination(1));
           break;
         case 'prev':
-          dispatch(pagination(-1));
+          dispatch(allActions.filtersActions.pagination(-1));
           break;
         default:
       }
@@ -37,7 +37,7 @@ const Pagination = () => {
           </a>
         </li>
         <li>
-          <span>{currentPage + 1}</span>
+          <span>{currentPage}</span>
         </li>
         <li>
           <a className="page-link" name="next">

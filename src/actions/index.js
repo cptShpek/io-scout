@@ -1,28 +1,9 @@
-import { appActionsType } from '../constants';
+import authorsActions from './authorsActions';
+import filtersActions from './filtersActions';
 
-export const getAllAuthors = () => {
-  return (dispatch) => {
-    fetch('./data.json')
-      .then((res) => res.json())
-      .then((authors) => {
-        const pagesCount = Math.ceil(authors.length / 10);
-        authors.sort((a, b) => b.pageviews - a.pageviews);
-        const topAuthors = [];
-        for (let i = 0; i < 3; i++) {
-          topAuthors.push(authors.shift());
-        }
-        return dispatch({ type: appActionsType.GET_ALL_AUTHORS, authors, topAuthors, pagesCount });
-      })
-      .catch((err) => console.log(err));
-  };
+const allActions = {
+  authorsActions,
+  filtersActions,
 };
 
-export const findByName = (name) => ({
-  type: appActionsType.FIND_BY_NAME,
-  name,
-});
-
-export const pagination = (dirrection) => ({
-  type: appActionsType.PAGINATION,
-  dirrection,
-});
+export default allActions;
