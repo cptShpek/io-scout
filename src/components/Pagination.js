@@ -1,21 +1,23 @@
 import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import allActions from '../actions/index';
+import { Row, Col } from 'antd';
+import { pagination } from '../actions/index';
 
 const Pagination = () => {
   const dispatch = useDispatch();
   const currentPage = useSelector((state) => state.filtersReducer.currentPage);
+  const authorsCount = useSelector((state) => state.filtersReducer.filteredAuthors.length);
   const pagLinksRef = useRef();
 
   useEffect(() => {
     const clickHandler = (e) => {
       switch (e.target.name) {
         case 'next':
-          dispatch(allActions.filtersActions.pagination(1));
+          dispatch(pagination(1));
           break;
         case 'prev':
-          dispatch(allActions.filtersActions.pagination(-1));
+          dispatch(pagination(-1));
           break;
         default:
       }
@@ -29,23 +31,26 @@ const Pagination = () => {
   }, []);
 
   return (
-    <div className="pagination">
-      <ul ref={pagLinksRef}>
-        <li>
-          <a className="page-link" name="prev">
-            &laquo;
-          </a>
-        </li>
-        <li>
-          <span>{currentPage}</span>
-        </li>
-        <li>
-          <a className="page-link" name="next">
-            &raquo;
-          </a>
-        </li>
-      </ul>
-    </div>
+    <Row justify="center" className="pagination" ref={pagLinksRef}>
+      <Col span={1} className="pagination-item arrow">
+        <a className="page-link" name="prev">
+          &laquo;
+        </a>
+      </Col>
+
+      <Col span={6} className="pagination-item">
+        <span className="itemCounter">
+          {currentPage * 10 - 10 === 0 ? 1 : currentPage * 10 - 10} -{' '}
+          {currentPage * 10 > authorsCount ? authorsCount : currentPage * 10}
+        </span>
+      </Col>
+
+      <Col span={1} className="pagination-item arrow">
+        <a className="page-link" name="next">
+          &raquo;
+        </a>
+      </Col>
+    </Row>
   );
 };
 

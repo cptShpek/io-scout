@@ -1,25 +1,33 @@
 import React, { useState } from 'react';
-import allActions from '../actions/index';
+import { filteredBy } from '../actions/index';
 import { useDispatch } from 'react-redux';
-import { Select } from 'antd';
+import { Select, Row, Col } from 'antd';
 const { Option } = Select;
 
 function SelectField() {
   const dispatch = useDispatch();
 
   function handleChange(val) {
-    dispatch(allActions.filtersActions.filteredBy(val));
+    dispatch(filteredBy(val));
   }
 
   return (
-    <>
-      <Select onChange={handleChange} defaultValue="Сортировать" style={{ width: 120 }}>
-        <Option value="pageviewsup">Просмотры по возрастанию</Option>
-        <Option value="pageviewsdown">Просмотры по убыванию</Option>
-        <Option value="nameup">Имя от А до Я</Option>
-        <Option value="namedown">Имя от Я до А</Option>
-      </Select>
-    </>
+    <Row>
+      <Col span={12}>
+        <Select
+          bordered={false}
+          dropdownClassName="filtersOptionsMenu"
+          showArrow={false}
+          onChange={handleChange}
+          defaultValue="Сортировать"
+        >
+          <Option value="PAGEVIEWSUP">Просмотры по возрастанию</Option>
+          <Option value="PAGEVIEWSDOWN">Просмотры по убыванию</Option>
+          <Option value="NAMEUP">Имя от А до Я</Option>
+          <Option value="NAMEDOWN">Имя от Я до А</Option>
+        </Select>
+      </Col>
+    </Row>
   );
 }
 

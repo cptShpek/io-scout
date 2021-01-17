@@ -3,13 +3,12 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import HomePage from './Pages/HomePage';
-import getAllActions from './actions/index';
+import { getAllAuthors } from './actions/index';
 
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getAllActions.authorsActions.getAllAuthors());
-    dispatch(getAllActions.filtersActions.init());
+    dispatch(getAllAuthors());
   }, []);
   return (
     <BrowserRouter>

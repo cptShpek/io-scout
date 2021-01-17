@@ -2,9 +2,6 @@ import { appActionsType } from '../constants';
 
 const initState = {
   authors: [],
-  currentPage: 0,
-  pagesCount: 0,
-  filteredAuthors: [],
 };
 
 const authorsReducer = (state = initState, action) => {

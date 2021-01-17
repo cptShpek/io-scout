@@ -7,7 +7,6 @@ import { Provider } from 'react-redux';
 import rootReducer from './reducers';
 import App from './App';
 import './styles/index.css';
-import './styles/media.css';
 import 'antd/dist/antd.css';
 
 const store = createStore(
