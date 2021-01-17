@@ -4,18 +4,9 @@ import { List, Row, Col } from 'antd';
 
 function AuthorsList({ authors }) {
   const currentPage = useSelector((state) => state.filtersReducer.currentPage);
-  function getRandomColor() {
-    var letters = '0123456789ABCDEF';
-    var color = '#';
-    for (var i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-  }
 
   function isEven(index) {
-    if (index % 2 == 0) return true;
-    else return false;
+    return index % 2 == 0;
   }
 
   return (
@@ -29,22 +20,33 @@ function AuthorsList({ authors }) {
             avatar={
               <Row>
                 <Col className="queue">{index + 1 + (currentPage * 10 - 10)}</Col>
-                <Col style={{ background: getRandomColor() }} className="authorAvatar">
+                <Col style={{ backgroundColor: author.color }} className="authorAvatar">
                   {author.name.slice(0, 1)}
                 </Col>
               </Row>
             }
             title={
               <Row>
-                <Col span={12}>{author.name}</Col>
-                <Col xs={{ span: 4, push: 4 }} lg={{ push: 8 }}>
+                <Col className="info" span={12}>
+                  {author.name}
+                </Col>
+                <Col
+                  className="info"
+                  push={8}
+                  xs={{ span: 4, push: 5 }}
+                  sm={{ push: 8 }}
+                  md={{ push: 9 }}
+                  lg={{ push: 8 }}
+                >
                   {author.pageviews}
                 </Col>
               </Row>
             }
             description={
               <Row>
-                <Col span={12}>{author.count_pub} пуб.</Col>
+                <Col className="publications" span={12}>
+                  {author.count_pub} пуб.
+                </Col>
                 {author.id ? <img className="medal" src={`./media/medals/${author.id}.svg`} /> : null}
               </Row>
             }

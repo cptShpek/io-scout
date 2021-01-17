@@ -16,7 +16,7 @@ function InputField() {
     <Input
       bordered={false}
       onChange={changeHandler}
-      className="input"
+      className="input greyRow"
       prefix={search}
       placeholder="Поиск авторов по имени"
     />

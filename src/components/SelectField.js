@@ -12,7 +12,7 @@ function SelectField() {
   }
 
   return (
-    <Row>
+    <Row className="select">
       <Col span={12}>
         <Select
           bordered={false}

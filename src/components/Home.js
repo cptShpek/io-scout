@@ -8,10 +8,9 @@ import SelectField from './SelectField';
 
 function Home() {
   const state = useSelector((state) => state.filtersReducer);
+  const authors = state.filteredAuthors;
   const currentPage = state.currentPage;
-  const filteredAuthors = state.filteredAuthors;
-
-  const AuthorsOnPage = filteredAuthors.slice(currentPage * 10 - 10, currentPage * 10);
+  const AuthorsOnPage = authors.slice(currentPage * 10 - 10, currentPage * 10);
 
   return (
     <>
